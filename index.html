@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delta Force Event Match</title>
+  <style>
+    :root {
+      --bg-color: #27272f;
+      --accent-color: #00d68b;
+      --text-color: #e5e7eb;
+      --card-bg: #2e2e38;
+      --radius: 1rem;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid var(--accent-color);
+    }
+    .navbar .links a {
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+    .navbar button {
+      background-color: var(--accent-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      color: var(--bg-color);
+      cursor: pointer;
+      font-weight: bold;
+    }
+    header.hero {
+      background-image: url('DeltaForce_Event_Match_Poster.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1rem;
+      border-bottom: 2px solid var(--accent-color);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px #000000;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 2px #000000;
+    }
+    .hero .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cta-group a, .cta-group button {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.2s;
+    }
+    .cta-group a:hover, .cta-group button:hover {
+      background-color: #00b375;
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+      border-left: 4px solid var(--accent-color);
+      padding-left: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    table.roster {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+    table.roster th, table.roster td {
+      border: 1px solid var(--accent-color);
+      padding: 0.5rem;
+      text-align: center;
+    }
+    table.roster th {
+      background-color: var(--card-bg);
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+    .subcards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .subcard {
+      background-color: var(--card-bg);
+      border: 1px solid var(--accent-color);
+      border-radius: var(--radius);
+      padding: 1rem;
+      flex: 1 1 200px;
+      text-align: center;
+    }
+    .subcard a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 2px solid var(--accent-color);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">
+      <a href="#top"><strong>Delta Force 이벤트 매치</strong></a>
+    </div>
+    <div class="links">
+      <a href="#overview">개요</a>
+      <a href="#mini">미니게임</a>
+      <a href="#main">메인 경기</a>
+      <a href="#etc">기타 안내</a>
+      <a href="#roster">참가 명단</a>
+      <a href="#sub">서브 중계</a>
+    </div>
+    <button id="langToggle">日本語</button>
+  </nav>
+  <header class="hero" id="top">
+    <h1>Delta Force 한국 vs 일본 이벤트 매치</h1>
+    <p>2025년 8월 30일 오후 7시 진행</p>
+    <div class="cta-group">
+      <a href="https://chzzk.naver.com/3cdbb243a5bf1424ea2a964fe612e1a1" target="_blank" rel="noopener">중계 바로가기</a>
+    </div>
+  </header>
+  <main>
+    <section class="section" id="overview">
+      <h2>개요</h2>
+      <div class="card">
+        <p>대한민국과 일본이 맞붙는 Delta Force 이벤트 매치입니다. 경기 시작 전 미니게임에서 승리한 팀이 메인 매치의 공/수 또는 맵 선택권을 갖게 됩니다.</p>
+        <p><strong>일정:</strong> 8월 30일(토) 19:00</p>
+        <p>메인 매치 이전에 미니게임을 통해 열기가 달아오릅니다!</p>
+      </div>
+    </section>
+    <section class="section" id="mini">
+      <h2>미니게임 규칙</h2>
+      <div class="card">
+        <ul>
+          <li>각 분대에서 대표 1명씩 참여하여 팀 당 5명씩 칼전 데스매치 진행</li>
+          <li>기본 칼만 사용 가능하며, 맵과 거점은 당일 지정됩니다</li>
+          <li>승리한 팀은 메인 매치의 1경기에서 공/수 또는 맵 선택권을 가집니다</li>
+        </ul>
+      </div>
+    </section>
+    <section class="section" id="main">
+      <h2>메인 매치 진행</h2>
+      <div class="card">
+        <ol>
+          <li><strong>1경기:</strong> 미니게임 승리팀이 공/수 또는 맵을 선택합니다</li>
+          <li><strong>2경기:</strong> 경기 결과에 따라 다음 경기의 공/수 선택권이 결정됩니다</li>
+          <li><strong>3경기 (잿더미 맵 고정):</strong> 1·2경기 동안 가장 많은 거점을 점령한 팀이 공/수 선택권을 갖습니다. 동점일 경우 최종 티켓 수 또는 수비 시간을 비교합니다</li>
+        </ol>
+      </div>
+    </section>
+    <section class="section" id="etc">
+      <h2>기타 안내</h2>
+      <div class="card">
+        <p>상세 진행 방식은 승자의 군림 시스템에 따르며, 추가 룰이나 지침은 당일 현장에서 공지될 수 있습니다.</p>
+      </div>
+    </section>
+    <section class="section" id="roster">
+      <h2>참가 명단</h2>
+      <div class="card">
+        <h3>한국 팀</h3>
+        <table class="roster">
+          <tr><th>조</th><th>선수</th><th>선수</th><th>선수</th><th>선수</th></tr>
+          <tr><td>A</td><td>wolf52</td><td>유희원</td><td>혜지글로망망이</td><td>햄햄순이녀석</td></tr>
+          <tr><td>B</td><td>BroSix</td><td>최강보병KAR</td><td>jpg</td><td>요나형</td></tr>
+          <tr><td>C</td><td>사라진</td><td>styX</td><td>artyom</td><td>staX</td></tr>
+          <tr><td>D</td><td>DgAlpha</td><td>DgDelta</td><td>죽기빵</td><td>V3ronica</td></tr>
+          <tr><td>E</td><td>chamchamjoa</td><td>예뿜</td><td>보보보보니하니</td><td>나뽕</td></tr>
+        </table>
+        <h3>일본 팀</h3>
+        <table class="roster">
+          <tr><th>조</th><th>선수</th><th>선수</th><th>선수</th><th>선수</th></tr>
+          <tr><td>A</td><td>帝王フリーザ様</td><td>HypertAtsたつ</td><td>zboxpanic</td><td>Sayochan5sai</td></tr>
+          <tr><td>B</td><td>うぬんぬTTV</td><td>5LowTTV</td><td>ゆりすTTV</td><td>AKいい世来いよ</td></tr>
+          <tr><td>C</td><td>nivlacttv</td><td>纏流子</td><td>めそぽた</td><td>droopy321</td></tr>
+          <tr><td>D</td><td>nyanyanya</td><td>WMWMWMWM</td><td>Syafunek0TTV</td><td>TankBreaker</td></tr>
+          <tr><td>E</td><td>李雪亜</td><td>NEKU-NINE</td><td>Gamer4fpsTTV</td><td>薬漬けニキ</td></tr>
+        </table>
+      </div>
+    </section>
+    <section class="section" id="sub">
+      <h2>서브 중계</h2>
+      <div class="subcards">
+        <div class="subcard">
+          <h4>나비 NABII</h4>
+          <a href="https://chzzk.naver.com/search?query=%EB%82%98%EB%B9%84%20NABII" target="_blank" rel="noopener">바로가기</a>
+        </div>
+        <div class="subcard">
+          <h4>젭삐</h4>
+          <a href="https://chzzk.naver.com/692f6059bf0386205ab8d4f90161a51f" target="_blank" rel="noopener">바로가기</a>
+        </div>
+        <div class="subcard">
+          <h4>일병아리</h4>
+          <a href="https://chzzk.naver.com/31bb8838a98b58b35dc247bf9f30be03" target="_blank" rel="noopener">바로가기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Delta Force Event Match. All rights reserved.</p>
+  </footer>
+  <script>
+    // Simple language toggle between Korean and Japanese
+    const translations = {
+      ko: {
+        nav: {overview: '개요', mini: '미니게임', main: '메인 경기', etc: '기타 안내', roster: '참가 명단', sub:'서브 중계'},
+        heroTitle: 'Delta Force 한국 vs 일본 이벤트 매치',
+        heroSchedule: '2025년 8월 30일 오후 7시 진행',
+        ctaWatch: '중계 바로가기',
+      },
+      ja: {
+        nav: {overview: '概要', mini: 'ミニゲーム', main: 'メイン試合', etc: 'その他案内', roster: '参加者名簿', sub:'サブ中継'},
+        heroTitle: 'デルタフォース 韓国対日本 イベントマッチ',
+        heroSchedule: '2025年8月30日 19:00 開始',
+        ctaWatch: '中継を見る',
+      }
+    };
+    let currentLang = 'ko';
+    const langToggleBtn = document.getElementById('langToggle');
+    const navLinks = document.querySelectorAll('.navbar .links a');
+    const heroTitle = document.querySelector('.hero h1');
+    const heroSchedule = document.querySelector('.hero p');
+    const ctaLink = document.querySelector('.cta-group a');
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'ko' ? 'ja' : 'ko';
+      applyLanguage();
+    });
+    function applyLanguage() {
+      const t = translations[currentLang];
+      // update nav
+      const order = ['overview','mini','main','etc','roster','sub'];
+      navLinks.forEach((link, idx) => {
+        const key = order[idx];
+        link.textContent = t.nav[key];
+      });
+      // update hero
+      heroTitle.textContent = t.heroTitle;
+      heroSchedule.textContent = t.heroSchedule;
+      ctaLink.textContent = t.ctaWatch;
+      // toggle button text
+      langToggleBtn.textContent = currentLang === 'ko' ? '日本語' : '한국어';
+    }
+    applyLanguage();
+  </script>
+</body>
+</html>
